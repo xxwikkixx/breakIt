@@ -109,7 +109,9 @@ public class MainActivity extends Activity {
 			//Download the file
 			try {
 				Downloader.DownloadFromUrl("http://breakit.herokuapp.com/recentEntries.xml", openFileOutput("recentEntries.xml", Context.MODE_PRIVATE));
-			} catch (FileNotFoundException e) {
+		
+			} 
+			catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 			

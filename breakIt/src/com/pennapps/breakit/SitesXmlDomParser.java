@@ -31,7 +31,7 @@ import android.util.Log;
 public class SitesXmlDomParser {
 	static final String KEY_SITE = "object";
 	static final String KEY_NAME = "title";
-	static final String KEY_LINK = "link";
+	static final String KEY_LINK = "video";
 	static final String KEY_ABOUT = "about";
 	static final String KEY_IMAGE_URL = "image";
 

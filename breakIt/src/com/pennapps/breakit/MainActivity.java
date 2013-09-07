@@ -21,6 +21,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +33,9 @@ public class MainActivity extends Activity {
 	
 	private SitesAdapter mAdapter;
 	private ListView sitesList;
+	
+	 private VideoView video;
+	 private MediaController ctlr;
 	
 	final int REQUEST_CAMERA_VIDEO = 1;
 
@@ -62,9 +67,29 @@ public class MainActivity extends Activity {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
 					String url = mAdapter.getItem(pos).getLink();
+					setContentView(R.layout.mediaplayer);
+					VideoView videoView = (VideoView) findViewById(R.id.video);
+					MediaController mc = new MediaController(context);
+					mc.setAnchorView(videoView);
+					mc.setMediaPlayer(videoView);
+					Uri video = Uri.parse(url);
+					videoView.setMediaController(mc);
+					videoView.setVideoURI(video);
+					videoView.start();
+					
+					
+					 
+					/* MediaController mc = new MediaController(this);
+					mc.setAnchorView(videoView);
+					mc.setMediaPlayer(videoView);
+					Uri video = Uri.parse(url);
+					videoView.setMediaController(mc);
+					videoView.setVideoURI(video);
+					videoView.start();
+					
 					Intent i = new Intent(Intent.ACTION_VIEW);
 					i.setData(Uri.parse(url));
-					startActivity(i);
+					startActivity(i); */
 					
 				}
 				

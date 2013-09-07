@@ -24,16 +24,14 @@ import android.content.Context;
 import android.util.Log;
 
 /*
- * Helper object for parsing StackExchange Sites listen from XML source.
- * This class is modeled after the example given here:
- * http://www.androidhive.info/2011/11/android-xml-parsing-tutorial/
+ * Helper object for parsing StackExchange Sites listen from XML source
  */
 public class SitesXmlDomParser {
 	static final String KEY_SITE = "object";
 	static final String KEY_NAME = "title";
 	static final String KEY_LINK = "video";
 	static final String KEY_ABOUT = "about";
-	static final String KEY_IMAGE_URL = "image";
+	static final String KEY_IMAGE_URL = "img";
 
 	/*
 	 * High level method that will read the xml file and parse it 

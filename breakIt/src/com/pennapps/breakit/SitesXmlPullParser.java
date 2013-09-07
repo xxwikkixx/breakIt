@@ -18,7 +18,7 @@ public class SitesXmlPullParser {
 	static final String KEY_NAME = "title";
 	static final String KEY_LINK = "video";
 	static final String KEY_ABOUT = "about";
-	static final String KEY_IMAGE_URL = "image";
+	static final String KEY_IMAGE_URL = "img";
 
 	public static List<StackSite> getStackSitesFromFile(Context ctx) {
 

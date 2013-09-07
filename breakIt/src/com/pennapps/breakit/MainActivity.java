@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 		protected Void doInBackground(Void... arg0) {
 			//Download the file
 			try {
-				Downloader.DownloadFromUrl("LINK FOR URL GOES HERE /stacksites.xml", openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
+				Downloader.DownloadFromUrl("http://breakit.herokuapp.com/entries.xml", openFileOutput("entries.xml", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

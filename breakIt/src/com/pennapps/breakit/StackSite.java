@@ -2,16 +2,16 @@ package com.pennapps.breakit;
 
 public class StackSite {
 
-	private String name;
+	private String title;
 	private String link;
-	private String imgUrl;
+	private String img;
 	
 	public String getName(){
-		return name;
+		return title;
 	}
 	
-	public void setName(String name){
-		this.name = name;
+	public void setName(String title){
+		this.title = title;
 	}
 	
 	public String getLink(){
@@ -23,14 +23,14 @@ public class StackSite {
 	}
 	
 	public String getImgUrl(){
-		return imgUrl;
+		return img;
 	}
-	public void setImgUrl(String imgUrl){
-		this.imgUrl = imgUrl;
+	public void setImgUrl(String img){
+		this.img = img;
 	}
 	
 	@Override
 	public String toString() {
-		return "StackSite [name=" + name + ", link=" + link + ", imgUrl=" + imgUrl + "]";
+		return "StackSite [title=" + title + ", link=" + link + ", img=" + img + "]";
 	}
 }

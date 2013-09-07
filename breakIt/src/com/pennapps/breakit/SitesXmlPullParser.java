@@ -13,9 +13,9 @@ import android.content.Context;
 
 public class SitesXmlPullParser {
 
-	static final String KEY_NAME = "title";
+	static final String KEY_NAME = "name";
 	static final String KEY_LINK = "link";
-	static final String KEY_IMAGE_URL = "img";
+	static final String KEY_IMAGE_URL = "image";
 	
 	public static List<StackSite> getStackSitesFromFile(Context ctx) {
 		List<StackSite> stackSites;
@@ -29,7 +29,7 @@ public class SitesXmlPullParser {
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			XmlPullParser xpp = factory.newPullParser();
 			
-			FileInputStream fis  = ctx.openFileInput("Entries.xml"); //URL END NAME WITH ALL THE LISTS CHANGE LATER
+			FileInputStream fis  = ctx.openFileInput("StackSites.xml"); //URL END NAME WITH ALL THE LISTS CHANGE LATER
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
 			
 			xpp.setInput(reader);

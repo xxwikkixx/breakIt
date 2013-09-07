@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 		protected Void doInBackground(Void... arg0) {
 			//Download the file
 			try {
-				Downloader.DownloadFromUrl("http://breakit.herokuapp.com/entries.xml", openFileOutput("entries.xml", Context.MODE_PRIVATE));
+				Downloader.DownloadFromUrl("https://dl.dropboxusercontent.com/u/21797199/StackSites.xml", openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -106,6 +106,9 @@ public class MainActivity extends Activity {
 		ArrayList<CharSequence> emails = new ArrayList<CharSequence>();
 		AccountManager mAccountManager = AccountManager.get(context);
 		Account[] accounts = mAccountManager.getAccountsByType("com.google");
+		if (accounts.length != 0)
+		{
+		
 		for(int i=0;i<accounts.length;i++) {
 			if (emails.indexOf(accounts[i]) == -1) {
 				emails.add(accounts[i].name);
@@ -122,6 +125,7 @@ public class MainActivity extends Activity {
 		    });
 		 
 		builder.create().show();
+		}
 }
 	
 

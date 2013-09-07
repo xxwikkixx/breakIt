@@ -1,36 +1,40 @@
 package com.pennapps.breakit;
 
+
 public class StackSite {
 
-	private String title;
+	private String name;
 	private String link;
-	private String img;
+	private String about;
+	private String imgUrl;
 	
-	public String getName(){
-		return title;
+	public String getName() {
+		return name;
 	}
-	
-	public void setName(String title){
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public String getLink(){
+	public String getLink() {
 		return link;
 	}
-	
-	public void setLink(String link){
+	public void setLink(String link) {
 		this.link = link;
 	}
-	
-	public String getImgUrl(){
-		return img;
+	public String getAbout() {
+		return about;
 	}
-	public void setImgUrl(String img){
-		this.img = img;
+	public void setAbout(String about) {
+		this.about = about;
 	}
-	
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	@Override
 	public String toString() {
-		return "StackSite [title=" + title + ", link=" + link + ", img=" + img + "]";
+		return "StackSite [name=" + name + ", link=" + link + ", about="
+				+ about + ", imgUrl=" + imgUrl + "]";
 	}
 }

@@ -29,9 +29,9 @@ import android.util.Log;
  * http://www.androidhive.info/2011/11/android-xml-parsing-tutorial/
  */
 public class SitesXmlDomParser {
-	static final String KEY_NAME = "title";
+	static final String KEY_NAME = "name";
 	static final String KEY_LINK = "link";
-	static final String KEY_IMAGE_URL = "img";
+	static final String KEY_IMAGE_URL = "image";
 
 	/*
 	 * High level method that will read the xml file and parse it 
@@ -54,7 +54,7 @@ public class SitesXmlDomParser {
 			curStackSite.setLink(getValue(e,KEY_LINK));
 			curStackSite.setImgUrl(getValue(e,KEY_IMAGE_URL));
 			
-			//Log.i("entries", curStackSite.getName());
+			//Log.i("StackSites", curStackSite.getName());
 			stackSites.add(curStackSite);
 		}
 		
@@ -65,14 +65,14 @@ public class SitesXmlDomParser {
 	private static String readFile(Context ctx){
 		String xml = "";
 		try {
-			FileInputStream fis = ctx.openFileInput("entries.xml");
+			FileInputStream fis = ctx.openFileInput("StackSites.xml");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
 			String line;
 			while((line = reader.readLine()) != null){
 				xml += line;
 				xml += "\n";
 			}
-			//Log.i("entries", xml);
+			//Log.i("StackSites", xml);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -44,7 +44,7 @@ public class SitesAdapter extends ArrayAdapter<StackSite> {
 @Override
 public View getView(int pos, View convertView, ViewGroup parent){
 	RelativeLayout row = (RelativeLayout)convertView;
-	Log.i("entries", "getView pos = " + pos);
+	Log.i("StackSites", "getView pos = " + pos);
 	if(null == row){
 		//No recycled View, we have to inflate one.
 		LayoutInflater inflater = (LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

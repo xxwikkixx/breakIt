@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class Downloader {
 
-	private static String  myTag = "entries";
+	private static String  myTag = "StackSites";
 	
 	static final int POST_PROGRESS = 1;
 	

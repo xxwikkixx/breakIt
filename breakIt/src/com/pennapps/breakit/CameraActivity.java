@@ -132,7 +132,7 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		releaseRecorder();
 		
 		File outputDir = Environment.getExternalStorageDirectory();
-		String outFileName = outputDir+"/test.mp4";
+		String outFileName = outputDir+"/sdcard/Record01.mp4";
 		
 		File outFile = new File(outFileName);
 		if (outFile.exists())

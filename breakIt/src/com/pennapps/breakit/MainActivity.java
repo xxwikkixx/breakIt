@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.content.Context;
@@ -35,6 +36,17 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		getAccountNames();
+		Button buRecord = (Button) findViewById(R.id.buRecord);
+		
+		 buRecord.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class);
+			}
+		 });
+		
 		
 		sitesList = (ListView)findViewById(R.id.sitesList);	
 		sitesList.setOnItemClickListener(new OnItemClickListener() {

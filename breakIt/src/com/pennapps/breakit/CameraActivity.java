@@ -132,6 +132,7 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		
 		File outputDir = Environment.getExternalStorageDirectory();
 		String outFileName = outputDir+"/Record01.mp4";
+		Log.e(TAG,"outfilename:"+outFileName);
 		
 		File outFile = new File(outFileName);
 		if (outFile.exists())
@@ -143,13 +144,14 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
         recorder.setProfile(cp);		
 		recorder.setPreviewDisplay(holder.getSurface());
-		recorder.setOutputFile(outFileName);		
+		recorder.setOutputFile(outFileName);
+		Log.e(TAG,"praparing recorder");
 		recorder.prepare();	
 	}
 	
 	private void startRecord(){		
-		camera.stopPreview();
-		camera.unlock();		
+		//camera.stopPreview();
+		//camera.unlock();		
 		recorder.start();
 	}
 	

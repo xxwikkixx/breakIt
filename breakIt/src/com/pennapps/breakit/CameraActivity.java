@@ -14,7 +14,6 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 public class CameraActivity extends Activity implements OnClickListener, SurfaceHolder.Callback{
@@ -99,13 +98,13 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 			Log.e(TAG,"ClickButton");
 			if (isRecording) {
 				//stop it
-				//stopRecord();
+				stopRecord();
 				isRecording = false;
 				recordButton.setImageResource(res_startbutton_ID);				
 			}else {
 				//start record
 				try {
-					//startRecord();
+					startRecord();
 					isRecording = true;
 					recordButton.setImageResource(res_stopbutton_ID);
 				} catch (Exception e) {
@@ -132,7 +131,7 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		releaseRecorder();
 		
 		File outputDir = Environment.getExternalStorageDirectory();
-		String outFileName = outputDir+"/sdcard/Record01.mp4";
+		String outFileName = outputDir+"/Record01.mp4";
 		
 		File outFile = new File(outFileName);
 		if (outFile.exists())

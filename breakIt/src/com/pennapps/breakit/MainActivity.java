@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class);
+				Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class); //button click to next screen
 			}
 		 });
 		

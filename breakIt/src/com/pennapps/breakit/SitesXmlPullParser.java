@@ -10,6 +10,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.content.Context;
+import android.util.Log;
 
 public class SitesXmlPullParser {
 
@@ -18,8 +19,7 @@ public class SitesXmlPullParser {
 	static final String KEY_IMAGE_URL = "image";
 	
 	public static List<StackSite> getStackSitesFromFile(Context ctx) {
-		List<StackSite> stackSites;
-		stackSites = new ArrayList<StackSite>();
+		List<StackSite> stackSites = new ArrayList<StackSite>();
 		
 		StackSite curStackSite = null;
 		
@@ -28,15 +28,13 @@ public class SitesXmlPullParser {
 		try {
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			XmlPullParser xpp = factory.newPullParser();
-			
 			FileInputStream fis  = ctx.openFileInput("StackSites.xml"); //URL END NAME WITH ALL THE LISTS CHANGE LATER
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-			
 			xpp.setInput(reader);
 			
 			int eventType = xpp.getEventType();
-			
 			while (eventType != XmlPullParser.END_DOCUMENT) {
+				StackSite newSite = new StackSite();
 				String tagname = xpp.getName();
 				
 				switch(eventType) {
@@ -48,23 +46,24 @@ public class SitesXmlPullParser {
 					
 				case XmlPullParser.END_TAG:
 					if(tagname.equalsIgnoreCase(KEY_NAME)){
-						curStackSite.setName(curText);
+						newSite.setName(curText);
 					}
 					else if (tagname.equalsIgnoreCase(KEY_LINK)){
-						curStackSite.setLink(curText);
+						newSite.setLink(curText);
 					}
 					else if (tagname.equalsIgnoreCase(KEY_IMAGE_URL)){
-						curStackSite.setImgUrl(curText);
+						newSite.setImgUrl(curText);
 					}
 					break;
 					
 					default:
 						break;
-				
 				}
+				stackSites.add(newSite);
+				
 				eventType = xpp.next();
 			}
-			
+			Log.v("StackSites", "End");
 		}
 		catch(Exception e){
 			e.printStackTrace();

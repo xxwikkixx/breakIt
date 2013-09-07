@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class); //button click to next screen
+				startActivity(cameraScreen);
 			}
 		 });
 		

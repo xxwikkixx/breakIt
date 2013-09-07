@@ -81,10 +81,17 @@ public class MainActivity extends Activity {
 			
 			return null;
 		}
-	
+
+		protected void onPostExecute(Void result){
+			//setup our Adapter and set it to the ListView.
+			mAdapter = new SitesAdapter(MainActivity.this, -1, SitesXmlPullParser.getStackSitesFromFile(MainActivity.this));
+			sitesList.setAdapter(mAdapter);
+			Log.i("StackSites", "adapter size = "+ mAdapter.getCount());
+		}
+	}
 	private void getAccountNames() {
 		ArrayList<CharSequence> emails = new ArrayList<CharSequence>();
-		AccountManager mAccountManager = AccountManager.get(this);
+		AccountManager mAccountManager = AccountManager.get(context);
 		Account[] accounts = mAccountManager.getAccountsByType("com.google");
 		for(int i=0;i<accounts.length;i++) {
 			if (emails.indexOf(accounts[i]) == -1) {
@@ -92,7 +99,7 @@ public class MainActivity extends Activity {
 			}
 		}
 		CharSequence[] charseq = emails.toArray(new CharSequence[emails.size()]);
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle("Select your account")
 			.setCancelable(false)
 		    .setSingleChoiceItems(charseq, 1, new DialogInterface.OnClickListener() {
@@ -104,13 +111,6 @@ public class MainActivity extends Activity {
 		builder.create().show();
 }
 	
-	protected void onPostExecute(Void result){
-		//setup our Adapter and set it to the ListView.
-		mAdapter = new SitesAdapter(MainActivity.this, -1, SitesXmlPullParser.getStackSitesFromFile(MainActivity.this));
-		sitesList.setAdapter(mAdapter);
-		Log.i("StackSites", "adapter size = "+ mAdapter.getCount());
-	}
-}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

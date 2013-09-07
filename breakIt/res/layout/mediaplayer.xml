@@ -4,16 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="396dp"
-        android:layout_weight="1.09" />
+        android:layout_height="376dp"
+        android:layout_weight="1.57" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:text="Button" />
+        android:layout_height="wrap_content"
+        android:text="BreakIt" />
 
 </LinearLayout>

@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
 	} 
 	
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
 		switch(requestCode) {
 		case REQUEST_CAMERA_VIDEO:

@@ -38,3 +38,4 @@ public class StackSite {
 				+ about + ", imgUrl=" + imgUrl + "]";
 	}
 }
+

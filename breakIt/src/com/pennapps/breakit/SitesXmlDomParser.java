@@ -29,8 +29,10 @@ import android.util.Log;
  * http://www.androidhive.info/2011/11/android-xml-parsing-tutorial/
  */
 public class SitesXmlDomParser {
-	static final String KEY_NAME = "name";
+	static final String KEY_SITE = "object";
+	static final String KEY_NAME = "title";
 	static final String KEY_LINK = "link";
+	static final String KEY_ABOUT = "about";
 	static final String KEY_IMAGE_URL = "image";
 
 	/*
@@ -43,7 +45,7 @@ public class SitesXmlDomParser {
 		String xml = readFile(ctx); // getting XML
 		Document doc = getDomElement(xml); // getting DOM element
 		 
-		NodeList nl = doc.getElementsByTagName(KEY_NAME);
+		NodeList nl = doc.getElementsByTagName(KEY_SITE);
 		 
 		// looping through all site nodes <site>
 		for (int i = 0; i < nl.getLength(); i++) {
@@ -52,6 +54,7 @@ public class SitesXmlDomParser {
 			
 			curStackSite.setName(getValue(e,KEY_NAME));
 			curStackSite.setLink(getValue(e,KEY_LINK));
+			curStackSite.setAbout(getValue(e,KEY_ABOUT));
 			curStackSite.setImgUrl(getValue(e,KEY_IMAGE_URL));
 			
 			//Log.i("StackSites", curStackSite.getName());
@@ -65,7 +68,7 @@ public class SitesXmlDomParser {
 	private static String readFile(Context ctx){
 		String xml = "";
 		try {
-			FileInputStream fis = ctx.openFileInput("StackSites.xml");
+			FileInputStream fis = ctx.openFileInput("recentEntries.xml");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
 			String line;
 			while((line = reader.readLine()) != null){
@@ -134,3 +137,4 @@ public class SitesXmlDomParser {
             return doc;
     }
 }
+

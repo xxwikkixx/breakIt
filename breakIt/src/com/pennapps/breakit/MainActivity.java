@@ -26,11 +26,10 @@ import android.content.Intent;
 
 public class MainActivity extends Activity {
 	final Context context = this;
-
+	
 	private SitesAdapter mAdapter;
 	private ListView sitesList;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,19 +48,21 @@ public class MainActivity extends Activity {
 		 });
 		
 		
-		sitesList = (ListView)findViewById(R.id.sitesList);	
-		sitesList.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
-				// TODO Auto-generated method stub
-				String url = mAdapter.getItem(pos).getLink();
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				startActivity(i);
-			}
+		 sitesList = (ListView)findViewById(R.id.sitesList);
 			
-		});
+			//Set the click listener to launch the browser when a row is clicked.
+			sitesList.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
+					String url = mAdapter.getItem(pos).getLink();
+					Intent i = new Intent(Intent.ACTION_VIEW);
+					i.setData(Uri.parse(url));
+					startActivity(i);
+					
+				}
+				
+			});
 		
 		
 		if(isNetworkAvailable()){
@@ -84,10 +85,11 @@ public class MainActivity extends Activity {
 	
 	private class SitesDownloadTask extends AsyncTask<Void, Void, Void>{
 
+		@Override
 		protected Void doInBackground(Void... arg0) {
 			//Download the file
 			try {
-				Downloader.DownloadFromUrl("https://dl.dropboxusercontent.com/u/21797199/StackSites.xml", openFileOutput("StackSites.xml", Context.MODE_PRIVATE));
+				Downloader.DownloadFromUrl("http://breakit.herokuapp.com/recentEntries.xml", openFileOutput("recentEntries.xml", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

@@ -14,60 +14,89 @@ import android.util.Log;
 
 public class SitesXmlPullParser {
 
-	static final String KEY_NAME = "name";
+	static final String KEY_SITE = "object";
+	static final String KEY_NAME = "title";
 	static final String KEY_LINK = "link";
+	static final String KEY_ABOUT = "about";
 	static final String KEY_IMAGE_URL = "image";
-	
+
 	public static List<StackSite> getStackSitesFromFile(Context ctx) {
-		List<StackSite> stackSites = new ArrayList<StackSite>();
-		
+
+		// List of StackSites that we will return
+		List<StackSite> stackSites;
+		stackSites = new ArrayList<StackSite>();
+
+		// temp holder for current StackSite while parsing
 		StackSite curStackSite = null;
-		
+		// temp holder for current text value while parsing
 		String curText = "";
-		
+
 		try {
+			// Get our factory and PullParser
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			XmlPullParser xpp = factory.newPullParser();
-			FileInputStream fis  = ctx.openFileInput("StackSites.xml"); //URL END NAME WITH ALL THE LISTS CHANGE LATER
+
+			// Open up InputStream and Reader of our file.
+			FileInputStream fis = ctx.openFileInput("recentEntries.xml");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+
+			// point the parser to our file.
 			xpp.setInput(reader);
-			
+
+			// get initial eventType
 			int eventType = xpp.getEventType();
+
+			// Loop through pull events until we reach END_DOCUMENT
 			while (eventType != XmlPullParser.END_DOCUMENT) {
-				StackSite newSite = new StackSite();
+				// Get the current tag
 				String tagname = xpp.getName();
-				
-				switch(eventType) {
+
+				// React to different event types appropriately
+				switch (eventType) {
 				case XmlPullParser.START_TAG:
-				
+					if (tagname.equalsIgnoreCase(KEY_SITE)) {
+						// If we are starting a new <site> block we need
+						//a new StackSite object to represent it
+						curStackSite = new StackSite();
+					}
+					break;
+
 				case XmlPullParser.TEXT:
+					//grab the current text so we can use it in END_TAG event
 					curText = xpp.getText();
 					break;
-					
+
 				case XmlPullParser.END_TAG:
-					if(tagname.equalsIgnoreCase(KEY_NAME)){
-						newSite.setName(curText);
-					}
-					else if (tagname.equalsIgnoreCase(KEY_LINK)){
-						newSite.setLink(curText);
-					}
-					else if (tagname.equalsIgnoreCase(KEY_IMAGE_URL)){
-						newSite.setImgUrl(curText);
+					if (tagname.equalsIgnoreCase(KEY_SITE)) {
+						// if </site> then we are done with current Site
+						// add it to the list.
+						stackSites.add(curStackSite);
+					} else if (tagname.equalsIgnoreCase(KEY_NAME)) {
+						// if </name> use setName() on curSite
+						curStackSite.setName(curText);
+					} else if (tagname.equalsIgnoreCase(KEY_LINK)) {
+						// if </link> use setLink() on curSite
+						curStackSite.setLink(curText);
+					} else if (tagname.equalsIgnoreCase(KEY_ABOUT)) {
+						// if </about> use setAbout() on curSite
+						curStackSite.setAbout(curText);
+					} else if (tagname.equalsIgnoreCase(KEY_IMAGE_URL)) {
+						// if </image> use setImgUrl() on curSite
+						curStackSite.setImgUrl(curText);
 					}
 					break;
-					
-					default:
-						break;
+
+				default:
+					break;
 				}
-				stackSites.add(newSite);
-				
+				//move on to next iteration
 				eventType = xpp.next();
 			}
-			Log.v("StackSites", "End");
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// return the populated list.
 		return stackSites;
 	}
 }

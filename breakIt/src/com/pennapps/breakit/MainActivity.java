@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
@@ -25,10 +26,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 public class MainActivity extends Activity {
+	final String TAG = this.getClass().getSimpleName();
 	final Context context = this;
 	
 	private SitesAdapter mAdapter;
 	private ListView sitesList;
+	
+	final int REQUEST_CAMERA_VIDEO = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +45,11 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class); //button click to next screen
-				startActivity(cameraScreen);
+				Intent cameraScreen = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+				startActivityForResult(cameraScreen, REQUEST_CAMERA_VIDEO);
+				
+				//Intent cameraScreen = new Intent(getApplicationContext(), CameraActivity.class); //button click to next screen
+				//startActivity(cameraScreen);
 			}
 		 });
 		
@@ -82,6 +88,19 @@ public class MainActivity extends Activity {
 	    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 	    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	} 
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		switch(requestCode) {
+		case REQUEST_CAMERA_VIDEO:
+			if (resultCode == RESULT_OK) {
+				Uri videouri = data.getData();
+				Log.d(TAG, videouri.toString());
+			}
+			break;
+		}
+	}
 	
 	private class SitesDownloadTask extends AsyncTask<Void, Void, Void>{
 

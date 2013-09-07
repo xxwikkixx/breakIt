@@ -19,7 +19,7 @@ import android.widget.VideoView;
 public class CameraActivity extends Activity implements OnClickListener, SurfaceHolder.Callback{
 	
 	private static final String TAG = "CameraActivity";
-	private CamcorderProfile cp = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
+	private int imageQuality = CamcorderProfile.QUALITY_HIGH;
 	
 	private ImageButton recordButton = null;
 	private VideoView videoView = null;
@@ -123,7 +123,7 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		//release previous recorder, if any
 		releaseRecorder();
 		
-		File outputDir = Environment.getExternalStorageDirectory();
+		File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 		String outFileName = outputDir+"/Record01.mp4";
 		Log.e(TAG,"outfilename:"+outFileName);
 		
@@ -135,9 +135,13 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 		recorder.setCamera(camera);
 		recorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
 		recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        recorder.setProfile(cp);		
-		recorder.setPreviewDisplay(holder.getSurface());
+		CamcorderProfile cp = CamcorderProfile.get(this.imageQuality);
+		if (cp!=null)
+			recorder.setProfile(cp);
+		else
+			Log.e(TAG,"cp is null!");
 		recorder.setOutputFile(outFileName);
+		recorder.setPreviewDisplay(holder.getSurface());
 		Log.e(TAG,"preparing recorder");
 		recorder.prepare();
 		Log.e(TAG,"recorder prepared");

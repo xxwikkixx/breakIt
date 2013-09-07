@@ -20,8 +20,8 @@ import android.widget.VideoView;
 public class CameraActivity extends Activity implements OnClickListener, SurfaceHolder.Callback{
 	
 	private static final String TAG = "CameraActivity";
-	private CamcorderProfile cp = CamcorderProfile.get(CamcorderProfile.QUALITY_QVGA);
-
+	private CamcorderProfile cp = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
+	
 	private ImageButton recordButton = null;
 	private VideoView videoView = null;
 	private int res_startbutton_ID;
@@ -120,6 +120,7 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 	
 	private boolean initCamera(){
 		camera = Camera.open();
+		camera.setDisplayOrientation(90);
 		Camera.Parameters camParams = camera.getParameters();
 		camParams.setPreviewSize(176,144);
 	    camera.setParameters(camParams);

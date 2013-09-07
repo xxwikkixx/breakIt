@@ -9,15 +9,15 @@
     tools:context=".MainActivity" >
 
     <GridView
-        android:id="@+id/gridview"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:columnWidth="120dp"
-        android:gravity="center"
-        android:horizonalSpacing="0dp"
-        android:numColumns="2"
-        android:verticalSpacing="1dp" >
-
-</GridView>
+    android:id="@+id/gridView"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:numColumns="2"
+    android:verticalSpacing="0dp"
+    android:horizontalSpacing="0dp"
+    android:columnWidth="90dp"
+    android:stretchMode="columnWidth"
+    android:gravity="center" >
+    </GridView>
         
 </RelativeLayout>

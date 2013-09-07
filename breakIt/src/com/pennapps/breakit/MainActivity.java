@@ -1,11 +1,20 @@
 package com.pennapps.breakit;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.view.Menu;
 import android.widget.GridView;
 
+import android.content.Context;
+import android.content.DialogInterface;
+
 public class MainActivity extends Activity {
+	final Context context = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -13,8 +22,32 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		GridView gv = (GridView) findViewById(R.id.gridView);
 		gv.setAdapter(new ImageAdapter(this));
+		getAccountNames();
+		
+		
 		
 	}
+	private void getAccountNames() {
+		ArrayList<CharSequence> emails = new ArrayList<CharSequence>();
+		AccountManager mAccountManager = AccountManager.get(this);
+		Account[] accounts = mAccountManager.getAccountsByType("com.google");
+		for(int i=0;i<accounts.length;i++) {
+			if (emails.indexOf(accounts[i]) == -1) {
+				emails.add(accounts[i].name);
+			}
+		}
+		CharSequence[] charseq = emails.toArray(new CharSequence[emails.size()]);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Select your account")
+			.setCancelable(false)
+		    .setSingleChoiceItems(charseq, 1, new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialogInterface, int item) {
+		        	dialogInterface.dismiss();
+		        }
+		    });
+		 
+		builder.create().show();
+}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

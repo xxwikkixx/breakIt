@@ -51,24 +51,17 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
 	@Override
 	public void onStart() {
 		super.onStart();
-		
-		try {
-			Log.e(TAG,"onStart");
-			initCamera();
-			Log.e(TAG,"cam inited");
-			initRecorder();
-			Log.e(TAG,"record inited");
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Override
 	public void surfaceCreated(SurfaceHolder arg0) {
 		Log.e(TAG,"surfaceCreated");
-	    try {
+	    try {			
+			Log.e(TAG,"onStart");
+			initCamera();
+			Log.e(TAG,"cam inited");
+			initRecorder();
+			Log.e(TAG,"record inited");
 	    	camera.setPreviewDisplay(holder);
 	    	camera.startPreview();
 	    	Log.e(TAG,"preview started");
@@ -145,8 +138,9 @@ public class CameraActivity extends Activity implements OnClickListener, Surface
         recorder.setProfile(cp);		
 		recorder.setPreviewDisplay(holder.getSurface());
 		recorder.setOutputFile(outFileName);
-		Log.e(TAG,"praparing recorder");
-		recorder.prepare();	
+		Log.e(TAG,"preparing recorder");
+		recorder.prepare();
+		Log.e(TAG,"recorder prepared");
 	}
 	
 	private void startRecord(){		

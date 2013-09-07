@@ -76,8 +76,6 @@ public class MainActivity extends Activity {
 					videoView.setMediaController(mc);
 					videoView.setVideoURI(video);
 					videoView.start();
-					
-					
 					 
 					/* MediaController mc = new MediaController(this);
 					mc.setAnchorView(videoView);

@@ -50,7 +50,7 @@ public class DetailsActivity extends Activity {
 				if (requestCode == SELECT_VIDEO)
 				{
 					Uri selectedImageUri = data.getData();
-					selectedPath = getPath();//need a path here 
+			//		selectedPath = getPath();//need a path here 
 					doFileUpload(); //file uploading
 				}
 			}
@@ -129,7 +129,7 @@ public class DetailsActivity extends Activity {
 		        }
 			}
 		}
-	}
+	//}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -23,16 +23,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.pennapps.breakit.MainActivity;
 
 public class DetailsActivity extends Activity {
 	
-	final static String MESSAGE_ID = "com.pennapps.breakit.DetailsActivity.id";
-	final static String MESSAGE_VIDEO_PATH = "com.pennapps.breakit.DetailsActivity.videoPath";
+	//final static String MESSAGE_ID = "com.pennapps.breakit.DetailsActivity.id";
+	//final static String MESSAGE_VIDEO_PATH = "com.pennapps.breakit.DetailsActivity.videoPath";
+	final static String MESSAGE_REPO = "com.pennapps.breakit.DetailsActivity.repo";
 	
 	final String TAG = this.getClass().getSimpleName();
 	
+	String reponame;
+	FastRepo repo;
 	String videoPath;
 	String entryId;
 	String thumbPath;
@@ -40,8 +44,13 @@ public class DetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		videoPath = intent.getStringExtra(MESSAGE_VIDEO_PATH);
-		entryId = intent.getStringExtra(MESSAGE_ID);
+		
+		reponame = intent.getStringExtra(MESSAGE_REPO);		
+		repo = FastRepo.getRepo(reponame);
+		videoPath = repo.get("videoPath");
+		entryId = repo.get("entryId");
+		/*videoPath = intent.getStringExtra(MESSAGE_VIDEO_PATH);
+		entryId = intent.getStringExtra(MESSAGE_ID);*/
 		thumbPath = Environment.getExternalStorageDirectory()+"/breakit_thumbcache.jpg";
 		File outFile = new File(thumbPath);
 		if (outFile.exists())
@@ -66,8 +75,9 @@ public class DetailsActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				String about = ((EditText) findViewById(R.id.editText1)).getText().toString();
 				Upload u = new Upload();
-				u.execute(entryId, videoPath, thumbPath);
+				u.execute(entryId, videoPath, thumbPath, about);
 			}
 			
 		});

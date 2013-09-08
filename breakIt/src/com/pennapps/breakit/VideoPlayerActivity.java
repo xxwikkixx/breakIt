@@ -23,7 +23,7 @@ public class VideoPlayerActivity extends Activity {
 	final static String MESSAGE_URL = "com.pennapps.breakit.VideoPlayerActivity.url";
 	final static String MESSAGE_TITLE = "com.pennapps.breakit.VideoPlayerActivity.title";
 	final static String MESSAGE_ID = "com.pennapps.breakit.VideoPlayerActivity.id";
-	final static String MESSAGE_REPONAME = "com.pennapps.breakit.VideoPlayerActivity.reponame";
+	final static String MESSAGE_REPO = "com.pennapps.breakit.VideoPlayerActivity.repo";
 	
 	final String TAG = this.getClass().getSimpleName();
 	final int REQUEST_CAMERA_VIDEO = 1;
@@ -38,7 +38,7 @@ public class VideoPlayerActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		reponame = intent.getStringExtra(MESSAGE_REPONAME);
+		reponame = intent.getStringExtra(MESSAGE_REPO);
 		repo = FastRepo.getRepo(reponame);
 		if (repo != null) {
 			url = repo.get("url");
@@ -92,10 +92,9 @@ public class VideoPlayerActivity extends Activity {
 				Uri videouri = data.getData();
 				String videoPath = getRealPathFromURI(videouri);
 				Log.e(TAG,videoPath);
-				
+				repo.put("videoPath", videoPath);
 				Intent intent = new Intent(context, DetailsActivity.class);
-				intent.putExtra(DetailsActivity.MESSAGE_VIDEO_PATH, videoPath);
-				intent.putExtra(DetailsActivity.MESSAGE_ID,entryId);
+				intent.putExtra(DetailsActivity.MESSAGE_REPO, reponame);
 			    startActivity(intent);
 			}
 			break;

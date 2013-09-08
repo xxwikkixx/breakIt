@@ -28,6 +28,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 public class MainActivity extends Activity {
+	final static String REPONAME = "com.pennapps.breakit.key.fastrepo";
 	final String TAG = this.getClass().getSimpleName();
 	final Context context = this;
 	
@@ -72,18 +73,18 @@ public class MainActivity extends Activity {
 					String entryId = stackSite.getEntryId();
 					Intent intent = new Intent(context, VideoPlayerActivity.class);
 					
-					String reponame = VideoPlayerActivity.MESSAGE_REPONAME;
+					String reponame = MainActivity.REPONAME;
 					FastRepo fastRepo = new FastRepo();
 					fastRepo.put("url", url);
 					fastRepo.put("title", title);
 					fastRepo.put("entryId", entryId);
 					FastRepo.putRepo(reponame, fastRepo);					
 					
-					intent.putExtra(VideoPlayerActivity.MESSAGE_REPONAME, reponame);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_REPO, reponame);
 					
-					intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
+					/*intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_TITLE, title);
-					intent.putExtra(VideoPlayerActivity.MESSAGE_ID, entryId);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_ID, entryId);*/
 				    startActivity(intent);
 					 
 					/* MediaController mc = new MediaController(this);

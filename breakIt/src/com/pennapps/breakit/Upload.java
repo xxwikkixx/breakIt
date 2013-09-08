@@ -43,7 +43,7 @@ public class Upload extends AsyncTask<String, Void, String>{
 	        
 	        entity.addPart("entry_id", new StringBody(params[0]));
 	        entity.addPart("userEmail", new StringBody("nobody"));
-	        entity.addPart("about", new StringBody("something"));
+	        entity.addPart("about", new StringBody(params[3]));
 	        
 	        //entity.addPart("title", new StringBody(""));
 	      //      }

@@ -30,21 +30,20 @@ public final class R {
         public static final int stopbutton=0x7f020006;
     }
     public static final class id {
-        public static final int aboutTxt=0x7f08000c;
-        public static final int action_settings=0x7f08000e;
-        public static final int breakButton=0x7f080009;
-        public static final int buRecord=0x7f080006;
-        public static final int buUpload=0x7f080004;
-        public static final int editDescription=0x7f080003;
+        public static final int aboutTxt=0x7f08000b;
+        public static final int action_settings=0x7f08000d;
+        public static final int breakButton=0x7f080008;
+        public static final int buRecord=0x7f080005;
+        public static final int buUpload=0x7f080003;
         public static final int editText1=0x7f080001;
-        public static final int iconImg=0x7f08000a;
-        public static final int imgLogo=0x7f080007;
-        public static final int nameTxt=0x7f08000d;
-        public static final int progress=0x7f08000b;
-        public static final int sitesList=0x7f080005;
-        public static final int textDesc=0x7f080002;
+        public static final int iconImg=0x7f080009;
+        public static final int imgLogo=0x7f080006;
+        public static final int nameTxt=0x7f08000c;
+        public static final int progress=0x7f08000a;
+        public static final int sitesList=0x7f080004;
         public static final int textView1=0x7f080000;
-        public static final int video=0x7f080008;
+        public static final int uploadProgress=0x7f080002;
+        public static final int video=0x7f080007;
     }
     public static final class layout {
         public static final int activity_details=0x7f030000;

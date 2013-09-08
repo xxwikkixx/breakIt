@@ -19,6 +19,7 @@
 
         <ProgressBar
             android:id="@+id/progress"
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -27,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="40dp"
-            android:background="@drawable/shape"
             android:orientation="vertical"
             android:padding="10dp" >
 
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="default text"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFFAFA"
                 android:textSize="30sp" />
 
             <TextView
@@ -47,8 +47,8 @@
                 android:gravity="center"
                 android:text="Default text"
                 android:textSize="16sp"
+                android:textColor="#FFFAFA"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>

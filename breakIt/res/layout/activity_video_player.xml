@@ -2,20 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".VideoPlayerActivity" >
 
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1" />
-    
-     <Button
+
+    <Button
         android:id="@+id/breakButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:text="@string/button_break_activity_video_player" />
 
@@ -24,9 +25,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="Default Text Default Text Default Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:text="Default Text Default Text Default Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

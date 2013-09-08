@@ -1,11 +1,16 @@
 package com.pennapps.breakit;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -70,11 +75,11 @@ public class VideoPlayerActivity extends Activity {
 		case REQUEST_CAMERA_VIDEO:
 			if (resultCode == RESULT_OK) {
 				Uri videouri = data.getData();
-				Log.d(TAG, videouri.toString());
+				String videoPath = getRealPathFromURI(videouri);
+				Log.e(TAG,videoPath);
 				
-				String path = videouri.getPath();
 				Intent intent = new Intent(context, DetailsActivity.class);
-				intent.putExtra(DetailsActivity.MESSAGE_VIDEO_PATH, path);
+				intent.putExtra(DetailsActivity.MESSAGE_VIDEO_PATH, videoPath);
 				intent.putExtra(DetailsActivity.MESSAGE_ID,entryId);
 			    startActivity(intent);
 			}
@@ -87,6 +92,15 @@ public class VideoPlayerActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.video_player, menu);
 		return true;
+	}
+	
+	public String getRealPathFromURI(Uri contentUri) 
+	{
+	     String[] proj = { MediaStore.Audio.Media.DATA };
+	     Cursor cursor = managedQuery(contentUri, proj, null, null, null);
+	     int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
+	     cursor.moveToFirst();
+	     return cursor.getString(column_index);
 	}
 
 }

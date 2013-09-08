@@ -36,10 +36,12 @@ public class Upload extends AsyncTask<String, Void, String>{
 	        entity.addPart("video", new FileBody(new File (params[1])));
 	        Log.e(TAG,params[1]);
 	        Log.e(TAG,params[0]);
-	       // entity.addPart("img", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
+	       //entity.addPart("video", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
 	        	
 	        
 	        entity.addPart("entry_id", new StringBody(params[0]));
+	        entity.addPart("userEmail", new StringBody("nobody"));
+	        entity.addPart("about", new StringBody("something"));
 	        //entity.addPart("title", new StringBody(""));
 	      //      }
 	//        }

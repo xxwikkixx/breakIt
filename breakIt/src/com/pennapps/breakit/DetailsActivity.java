@@ -22,6 +22,9 @@ import com.pennapps.breakit.MainActivity;
 
 public class DetailsActivity extends Activity {
 	
+	final static String MESSAGE_ID = "com.pennapps.breakit.DetailsActivity.id";
+	final static String MESSAGE_VIDEO_PATH = "com.pennapps.breakit.DetailsActivity.videoPath";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

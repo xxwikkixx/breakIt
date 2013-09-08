@@ -22,12 +22,17 @@
         <requestFocus />
     </EditText>
 
+    <ProgressBar
+        android:id="@+id/uploadProgress"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
     <Button
         android:id="@+id/buUpload"
-        android:enabled="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:enabled="true"
         android:gravity="center"
         android:text="Publish" />
 

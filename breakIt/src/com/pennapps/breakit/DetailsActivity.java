@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.pennapps.breakit.MainActivity;
 
@@ -43,6 +44,7 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 	DetailsActivity context = this;
 	
 	Button buUpload;
+	ProgressBar indicator;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,8 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 		
 		setContentView(R.layout.activity_details);
 		buUpload = (Button) findViewById(R.id.buUpload);
+		indicator = (ProgressBar) findViewById(R.id.uploadProgress);
+		indicator.setVisibility(View.INVISIBLE);
 		
 		Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);
 		try {
@@ -83,6 +87,7 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 				String about = ((EditText) findViewById(R.id.editText1)).getText().toString();
 				Upload u = new Upload(context);
 				u.execute(entryId, videoPath, thumbPath, about);
+				indicator.setVisibility(View.VISIBLE);
 				buUpload.setEnabled(false);
 			}
 			
@@ -102,6 +107,7 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 	public void onTaskComplete(Object resultArg) {
 		Log.e(TAG, "upload complete!");
 		buUpload.setEnabled(true);
+		indicator.setVisibility(View.INVISIBLE);
 		
 	}
 }

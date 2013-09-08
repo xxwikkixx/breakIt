@@ -89,7 +89,7 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		layout = inflater.inflate(R.layout.upload_popup, (ViewGroup)findViewById(R.id.upload_popup));
 		
-		upload_popup = new PopupWindow(layout, 200, 300, true);		
+		upload_popup = new PopupWindow(layout, 500, 700, true);		
 		
 		buUpload.setOnClickListener(new View.OnClickListener(){
 			@Override

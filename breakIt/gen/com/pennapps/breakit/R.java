@@ -35,7 +35,6 @@ public final class R {
         public static final int breakButton=0x7f080008;
         public static final int buRecord=0x7f080005;
         public static final int buUpload=0x7f080003;
-        public static final int button1=0x7f08000e;
         public static final int editText1=0x7f080001;
         public static final int iconImg=0x7f080009;
         public static final int imgLogo=0x7f080006;
@@ -45,6 +44,7 @@ public final class R {
         public static final int textView1=0x7f080000;
         public static final int uploadProgress=0x7f080002;
         public static final int upload_popup=0x7f08000d;
+        public static final int upload_poup_OK_button=0x7f08000e;
         public static final int video=0x7f080007;
     }
     public static final class layout {

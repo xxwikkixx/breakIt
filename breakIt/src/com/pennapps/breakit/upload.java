@@ -22,6 +22,7 @@ import com.pennapps.breakit.MainActivity;
 import android.net.Uri;
 import android.os.AsyncTask;
 public class upload extends AsyncTask<String, Void, String>{
+	public final String MESSAGE_VIDEO_PATH = null;
 	String URL = "http://breakit.herokuapp.com/upload";
 	//uploadFile(URL, )
 	public void uploadFilez() {
@@ -30,14 +31,13 @@ public class upload extends AsyncTask<String, Void, String>{
 	    HttpPost httpPost = new HttpPost(URL);
 	    try {
 	        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-	//        entity.addPart("video", new FileBody(new File (videouri.getData()));
+	        entity.addPart("video", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
 
-//	        for(int index=0; index < nameValuePairs.size(); index++) {
-	  //          if(nameValuePairs.get(index).getName().equalsIgnoreCase("image")) {
-	                // If the key equals to "image", we use FileBody to transfer the data
-	    //        } else {
-	                // Normal string data
-	        entity.addPart("testing!!!", new StringBody("it works"));
+	        entity.addPart("img", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
+	        	
+	        
+	        entity.addPart("entry_id", new StringBody("1"));
+	        //entity.addPart("title", new StringBody(""));
 	      //      }
 	//        }
 

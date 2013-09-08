@@ -33,7 +33,8 @@ public class DetailsActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
+				upload u = new upload();
+				u.execute();
 			}
 			
 		});

@@ -38,11 +38,13 @@ public class VideoPlayerActivity extends Activity {
 		url = intent.getStringExtra(MESSAGE_URL);
 		title = intent.getStringExtra(MESSAGE_TITLE);
 		entryId = intent.getStringExtra(MESSAGE_ID);
-		setContentView(R.layout.activity_video_player);		
+		setContentView(R.layout.activity_video_player);
+		
 		
 		//Initialize title
 		TextView titleTextView = (TextView) findViewById(R.id.textView1);
 		titleTextView.setText(title);
+		setTitle(title);
 		//Initialize break button
 		Button breakButton = (Button) findViewById(R.id.breakButton);
 		breakButton.setOnClickListener(new View.OnClickListener(){

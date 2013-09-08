@@ -7,7 +7,7 @@
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1" />
@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:textColor="#FF0000"
         android:text="@string/button_break_activity_video_player" />
 
     <TextView

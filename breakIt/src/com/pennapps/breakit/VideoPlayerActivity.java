@@ -40,10 +40,17 @@ public class VideoPlayerActivity extends Activity {
 		Intent intent = getIntent();
 		reponame = intent.getStringExtra(MESSAGE_REPONAME);
 		repo = FastRepo.getRepo(reponame);
+		if (repo != null) {
+			url = repo.get("url");
+			entryId = repo.get("entryId");
+			title = repo.get("title");
+			Log.e(TAG,"repo got!");
+		} else {
+			url = intent.getStringExtra(MESSAGE_URL);
+			title = intent.getStringExtra(MESSAGE_TITLE);
+			entryId = intent.getStringExtra(MESSAGE_ID);
+		}
 		
-		url = intent.getStringExtra(MESSAGE_URL);
-		title = intent.getStringExtra(MESSAGE_TITLE);
-		entryId = intent.getStringExtra(MESSAGE_ID);
 		setContentView(R.layout.activity_video_player);
 		
 		

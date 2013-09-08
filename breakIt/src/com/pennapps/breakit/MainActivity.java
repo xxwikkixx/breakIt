@@ -69,11 +69,21 @@ public class MainActivity extends Activity {
 					StackSite stackSite = mAdapter.getItem(pos);
 					String url = stackSite.getLink();
 					String title = stackSite.getAbout()+" "+stackSite.getName();
-					String entryid = stackSite.getEntryId();
+					String entryId = stackSite.getEntryId();
 					Intent intent = new Intent(context, VideoPlayerActivity.class);
+					
+					String reponame = VideoPlayerActivity.MESSAGE_REPONAME;
+					FastRepo fastRepo = new FastRepo();
+					fastRepo.put("url", url);
+					fastRepo.put("title", title);
+					fastRepo.put("entryId", entryId);
+					FastRepo.putRepo(reponame, fastRepo);					
+					
+					intent.putExtra(VideoPlayerActivity.MESSAGE_REPONAME, reponame);
+					
 					intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_TITLE, title);
-					intent.putExtra(VideoPlayerActivity.MESSAGE_ID, entryid);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_ID, entryId);
 				    startActivity(intent);
 					 
 					/* MediaController mc = new MediaController(this);

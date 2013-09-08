@@ -75,6 +75,7 @@ public class VideoPlayerActivity extends Activity {
 				String path = videouri.getPath();
 				Intent intent = new Intent(context, DetailsActivity.class);
 				intent.putExtra(DetailsActivity.MESSAGE_VIDEO_PATH, path);
+				intent.putExtra(DetailsActivity.MESSAGE_ID,entryId);
 			    startActivity(intent);
 			}
 			break;

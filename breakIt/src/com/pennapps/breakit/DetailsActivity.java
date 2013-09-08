@@ -25,9 +25,20 @@ public class DetailsActivity extends Activity {
 	final static String MESSAGE_ID = "com.pennapps.breakit.DetailsActivity.id";
 	final static String MESSAGE_VIDEO_PATH = "com.pennapps.breakit.DetailsActivity.videoPath";
 	
+	final String TAG = this.getClass().getSimpleName();
+	
+	String videoPath;
+	String entryId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();
+		videoPath = intent.getStringExtra(MESSAGE_VIDEO_PATH);
+		entryId = intent.getStringExtra(MESSAGE_ID);
+		
+		Log.e(TAG, videoPath);
+		Log.e(TAG, entryId);
+		
 		setContentView(R.layout.activity_details);
 		
 		Button buUpload = (Button) findViewById(R.id.buUpload);

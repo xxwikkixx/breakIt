@@ -55,6 +55,8 @@ public class SitesXmlDomParser {
 			curStackSite.setLink(getValue(e,KEY_LINK));
 			curStackSite.setAbout(getValue(e,KEY_ABOUT));
 			curStackSite.setImgUrl(getValue(e,KEY_IMAGE_URL));
+			curStackSite.setEntryId(getValue(e, KEY_ID));
+			
 			
 			//Log.i("StackSites", curStackSite.getName());
 			stackSites.add(curStackSite);

@@ -84,6 +84,9 @@ public class SitesXmlPullParser {
 					} else if (tagname.equalsIgnoreCase(KEY_IMAGE_URL)) {
 						// if </image> use setImgUrl() on curSite
 						curStackSite.setImgUrl(curText);
+					} else if (tagname.equalsIgnoreCase(KEY_ID)) {
+						// if </image> use setImgUrl() on curSite
+						curStackSite.setEntryId(curText);
 					}
 					break;
 

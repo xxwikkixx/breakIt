@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
@@ -20,10 +21,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 
 import com.pennapps.breakit.MainActivity;
@@ -43,8 +48,10 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 	String thumbPath;
 	DetailsActivity context = this;
 	
-	Button buUpload;
-	ProgressBar indicator;
+	private Button buUpload;
+	private ProgressBar indicator;
+	private PopupWindow upload_popup;
+	private View layout;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +85,13 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 			e.printStackTrace();
 		}
 		
+		LayoutInflater inflater = (LayoutInflater) DetailsActivity.this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		layout = inflater.inflate(R.layout.upload_popup, (ViewGroup)findViewById(R.id.upload_popup));
 		
+		upload_popup = new PopupWindow(layout, 200, 300, true);		
 		
 		buUpload.setOnClickListener(new View.OnClickListener(){
-
 			@Override
 			public void onClick(View arg0) {
 				String about = ((EditText) findViewById(R.id.editText1)).getText().toString();
@@ -108,6 +118,18 @@ public class DetailsActivity extends Activity implements OnTaskCompleteListener 
 		Log.e(TAG, "upload complete!");
 		buUpload.setEnabled(true);
 		indicator.setVisibility(View.INVISIBLE);
+		
+		upload_popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+		
+		Button btnUploadPopupOK = (Button) layout.findViewById(R.id.upload_poup_OK_button); 
+		btnUploadPopupOK.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				upload_popup.dismiss();
+				setResult(RESULT_OK);
+				finish();
+			}			
+		});
 		
 	}
 }

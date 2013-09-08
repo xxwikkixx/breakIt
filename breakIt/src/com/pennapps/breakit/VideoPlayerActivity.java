@@ -27,6 +27,7 @@ public class VideoPlayerActivity extends Activity {
 	
 	final String TAG = this.getClass().getSimpleName();
 	final int REQUEST_CAMERA_VIDEO = 1;
+	final int REQUEST_DETAIL_ACTIVITY = 2;
 	String url = "";
 	String title = "";
 	String entryId = "";
@@ -95,8 +96,14 @@ public class VideoPlayerActivity extends Activity {
 				repo.put("videoPath", videoPath);
 				Intent intent = new Intent(context, DetailsActivity.class);
 				intent.putExtra(DetailsActivity.MESSAGE_REPO, reponame);
-			    startActivity(intent);
+				startActivityForResult(intent, REQUEST_DETAIL_ACTIVITY);
 			}
+			break;
+		case REQUEST_DETAIL_ACTIVITY:
+			if (resultCode == RESULT_OK) {
+				setResult(RESULT_OK);
+				finish();
+			}			
 			break;
 		}
 	}

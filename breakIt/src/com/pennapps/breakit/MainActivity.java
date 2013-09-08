@@ -67,15 +67,11 @@ public class MainActivity extends Activity {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
 					String url = mAdapter.getItem(pos).getLink();
-					setContentView(R.layout.mediaplayer);
-					VideoView videoView = (VideoView) findViewById(R.id.video);
-					MediaController mc = new MediaController(context);
-					mc.setAnchorView(videoView);
-					mc.setMediaPlayer(videoView);
-					Uri video = Uri.parse(url);
-					videoView.setMediaController(mc);
-					videoView.setVideoURI(video);
-					videoView.start();
+					String title = mAdapter.getItem(pos).getName();
+					Intent intent = new Intent(context, VideoPlayerActivity.class);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_TITLE, title);
+				    startActivity(intent);
 					 
 					/* MediaController mc = new MediaController(this);
 					mc.setAnchorView(videoView);

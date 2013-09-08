@@ -51,7 +51,7 @@ public class DetailsActivity extends Activity {
 				{
 					Uri selectedImageUri = data.getData();
 					selectedPath = getPath();//need a path here 
-					doFileUpload();
+					doFileUpload(); //file uploading
 				}
 			}
 		}

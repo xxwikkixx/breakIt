@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -16,11 +17,14 @@ import android.widget.VideoView;
 public class VideoPlayerActivity extends Activity {
 	final static String MESSAGE_URL = "com.pennapps.breakit.VideoPlayerActivity.url";
 	final static String MESSAGE_TITLE = "com.pennapps.breakit.VideoPlayerActivity.title";
+	final static String MESSAGE_ID = "com.pennapps.breakit.VideoPlayerActivity.id";
 	
 	final String TAG = this.getClass().getSimpleName();
 	final int REQUEST_CAMERA_VIDEO = 1;
 	String url = "";
 	String title = "";
+	String entryId = "";
+	Context context = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class VideoPlayerActivity extends Activity {
 		Intent intent = getIntent();
 		url = intent.getStringExtra(MESSAGE_URL);
 		title = intent.getStringExtra(MESSAGE_TITLE);
+		entryId = intent.getStringExtra(MESSAGE_ID);
 		setContentView(R.layout.activity_video_player);		
 		
 		//Initialize title
@@ -51,6 +56,7 @@ public class VideoPlayerActivity extends Activity {
 		mc.setAnchorView(videoView);
 		mc.setMediaPlayer(videoView);
 		Log.e(TAG,url);
+		Log.e(TAG,entryId);
 		Uri video = Uri.parse(url);
 		videoView.setMediaController(mc);
 		videoView.setVideoURI(video);
@@ -65,6 +71,11 @@ public class VideoPlayerActivity extends Activity {
 			if (resultCode == RESULT_OK) {
 				Uri videouri = data.getData();
 				Log.d(TAG, videouri.toString());
+				
+				String path = videouri.getPath();
+				Intent intent = new Intent(context, DetailsActivity.class);
+				intent.putExtra("somthign", path);
+			    startActivity(intent);
 			}
 			break;
 		}

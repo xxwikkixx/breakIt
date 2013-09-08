@@ -32,6 +32,7 @@ public class SitesXmlDomParser {
 	static final String KEY_LINK = "video";
 	static final String KEY_ABOUT = "about";
 	static final String KEY_IMAGE_URL = "img";
+	static final String KEY_ID = "entryId";
 
 	/*
 	 * High level method that will read the xml file and parse it 

@@ -69,9 +69,11 @@ public class MainActivity extends Activity {
 					StackSite stackSite = mAdapter.getItem(pos);
 					String url = stackSite.getLink();
 					String title = stackSite.getAbout()+" "+stackSite.getName();
+					String entryid = stackSite.getEntryId();
 					Intent intent = new Intent(context, VideoPlayerActivity.class);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_TITLE, title);
+					intent.putExtra(VideoPlayerActivity.MESSAGE_ID, entryid);
 				    startActivity(intent);
 					 
 					/* MediaController mc = new MediaController(this);

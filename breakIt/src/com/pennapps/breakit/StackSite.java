@@ -7,6 +7,7 @@ public class StackSite {
 	private String link;
 	private String about;
 	private String imgUrl;
+	private String entryId;
 	
 	public String getName() {
 		return name;
@@ -16,6 +17,12 @@ public class StackSite {
 	}
 	public String getLink() {
 		return link;
+	}
+	public String getEntryId() {
+		return entryId;
+	}
+	public void setEntryId(String entryId) {
+		this.entryId = entryId;
 	}
 	public void setLink(String link) {
 		this.link = link;
@@ -28,6 +35,7 @@ public class StackSite {
 	}
 	public String getImgUrl() {
 		return imgUrl;
+		
 	}
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
@@ -35,7 +43,7 @@ public class StackSite {
 	@Override
 	public String toString() {
 		return "StackSite [name=" + name + ", link=" + link + ", about="
-				+ about + ", imgUrl=" + imgUrl + "]";
+				+ about + ", imgUrl=" + imgUrl + ", entryID=" + entryId + "]";
 	}
 }
 

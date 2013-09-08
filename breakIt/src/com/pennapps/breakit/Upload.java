@@ -21,22 +21,25 @@ import com.pennapps.breakit.MainActivity;
 
 import android.net.Uri;
 import android.os.AsyncTask;
-public class upload extends AsyncTask<String, Void, String>{
+import android.util.Log;
+public class Upload extends AsyncTask<String, Void, String>{
+	final String TAG = this.getClass().getSimpleName();
 	public final String MESSAGE_VIDEO_PATH = null;
 	String URL = "http://breakit.herokuapp.com/upload";
 	//uploadFile(URL, )
-	public void uploadFilez() {
+	public void uploadFilez(String[] params) {
 	HttpClient httpClient = new DefaultHttpClient();
 	    HttpContext localContext = new BasicHttpContext();
 	    HttpPost httpPost = new HttpPost(URL);
 	    try {
 	        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-	        entity.addPart("video", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
-
-	        entity.addPart("img", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
+	        entity.addPart("video", new FileBody(new File (params[1])));
+	        Log.e(TAG,params[1]);
+	        Log.e(TAG,params[0]);
+	       // entity.addPart("img", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
 	        	
 	        
-	        entity.addPart("entry_id", new StringBody("1"));
+	        entity.addPart("entry_id", new StringBody(params[0]));
 	        //entity.addPart("title", new StringBody(""));
 	      //      }
 	//        }
@@ -50,8 +53,10 @@ public class upload extends AsyncTask<String, Void, String>{
 	}
 	@Override
 	protected String doInBackground(String... params) {
-		uploadFilez();
+		uploadFilez(params);
 		return null;
 	}
+	
+	
 
 }

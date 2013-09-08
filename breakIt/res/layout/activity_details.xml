@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8C4C4"
+    android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical" >
 
@@ -12,13 +12,6 @@
         android:layout_height="wrap_content"
         android:text="New Record:"
         android:textSize="25sp" />
-
-    <TextView
-        android:id="@+id/textVidDir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Video Dir"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
         android:id="@+id/editText1"
@@ -46,7 +39,7 @@
 
     <Button
         android:id="@+id/buUpload"
-        android:layout_width="286dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"

@@ -34,14 +34,17 @@ public class Upload extends AsyncTask<String, Void, String>{
 	    try {
 	        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 	        entity.addPart("video", new FileBody(new File (params[1])));
-	        Log.e(TAG,params[1]);
+	        entity.addPart("img", new FileBody(new File(params[2])));
+	        Log.e(TAG,"videopath:"+params[1]);
 	        Log.e(TAG,params[0]);
+	        Log.e(TAG,"thumbpath:"+params[2]);
 	       //entity.addPart("video", new FileBody(new File ("sdcard/DCIM/Camera/test.3gp")));
 	        	
 	        
 	        entity.addPart("entry_id", new StringBody(params[0]));
 	        entity.addPart("userEmail", new StringBody("nobody"));
 	        entity.addPart("about", new StringBody("something"));
+	        
 	        //entity.addPart("title", new StringBody(""));
 	      //      }
 	//        }

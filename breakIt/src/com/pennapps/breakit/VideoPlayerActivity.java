@@ -23,6 +23,7 @@ public class VideoPlayerActivity extends Activity {
 	final static String MESSAGE_URL = "com.pennapps.breakit.VideoPlayerActivity.url";
 	final static String MESSAGE_TITLE = "com.pennapps.breakit.VideoPlayerActivity.title";
 	final static String MESSAGE_ID = "com.pennapps.breakit.VideoPlayerActivity.id";
+	final static String MESSAGE_REPONAME = "com.pennapps.breakit.VideoPlayerActivity.reponame";
 	
 	final String TAG = this.getClass().getSimpleName();
 	final int REQUEST_CAMERA_VIDEO = 1;
@@ -30,11 +31,16 @@ public class VideoPlayerActivity extends Activity {
 	String title = "";
 	String entryId = "";
 	Context context = this;
+	String reponame = "";
+	FastRepo repo = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
+		reponame = intent.getStringExtra(MESSAGE_REPONAME);
+		repo = FastRepo.getRepo(reponame);
+		
 		url = intent.getStringExtra(MESSAGE_URL);
 		title = intent.getStringExtra(MESSAGE_TITLE);
 		entryId = intent.getStringExtra(MESSAGE_ID);

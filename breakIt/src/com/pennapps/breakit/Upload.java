@@ -26,6 +26,12 @@ public class Upload extends AsyncTask<String, Void, String>{
 	final String TAG = this.getClass().getSimpleName();
 	public final String MESSAGE_VIDEO_PATH = null;
 	String URL = "http://breakit.herokuapp.com/upload";
+	OnTaskCompleteListener listener;
+	
+	public Upload(OnTaskCompleteListener listener) {
+		this.listener = listener;
+	}
+	
 	//uploadFile(URL, )
 	public void uploadFilez(String[] params) {
 	HttpClient httpClient = new DefaultHttpClient();
@@ -60,6 +66,11 @@ public class Upload extends AsyncTask<String, Void, String>{
 	protected String doInBackground(String... params) {
 		uploadFilez(params);
 		return null;
+	}
+	
+	@Override
+    protected void onPostExecute(String result) {
+		listener.onTaskComplete("success");
 	}
 	
 	

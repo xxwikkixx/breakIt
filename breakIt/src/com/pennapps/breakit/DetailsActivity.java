@@ -27,7 +27,7 @@ import android.widget.EditText;
 
 import com.pennapps.breakit.MainActivity;
 
-public class DetailsActivity extends Activity {
+public class DetailsActivity extends Activity implements OnTaskCompleteListener {
 	
 	//final static String MESSAGE_ID = "com.pennapps.breakit.DetailsActivity.id";
 	//final static String MESSAGE_VIDEO_PATH = "com.pennapps.breakit.DetailsActivity.videoPath";
@@ -40,6 +40,10 @@ public class DetailsActivity extends Activity {
 	String videoPath;
 	String entryId;
 	String thumbPath;
+	DetailsActivity context = this;
+	
+	Button buUpload;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,6 +64,7 @@ public class DetailsActivity extends Activity {
 		Log.e(TAG, entryId);
 		
 		setContentView(R.layout.activity_details);
+		buUpload = (Button) findViewById(R.id.buUpload);
 		
 		Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);
 		try {
@@ -70,14 +75,15 @@ public class DetailsActivity extends Activity {
 		}
 		
 		
-		Button buUpload = (Button) findViewById(R.id.buUpload);
+		
 		buUpload.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				String about = ((EditText) findViewById(R.id.editText1)).getText().toString();
-				Upload u = new Upload();
+				Upload u = new Upload(context);
 				u.execute(entryId, videoPath, thumbPath, about);
+				buUpload.setEnabled(false);
 			}
 			
 		});
@@ -89,5 +95,13 @@ public class DetailsActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+
+	@Override
+	public void onTaskComplete(Object resultArg) {
+		Log.e(TAG, "upload complete!");
+		buUpload.setEnabled(true);
+		
 	}
 }

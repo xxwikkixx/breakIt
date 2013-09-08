@@ -66,8 +66,9 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, View v, int pos,long id) {
-					String url = mAdapter.getItem(pos).getLink();
-					String title = mAdapter.getItem(pos).getName();
+					StackSite stackSite = mAdapter.getItem(pos);
+					String url = stackSite.getLink();
+					String title = stackSite.getAbout()+" "+stackSite.getName();
 					Intent intent = new Intent(context, VideoPlayerActivity.class);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_URL, url);
 					intent.putExtra(VideoPlayerActivity.MESSAGE_TITLE, title);

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/background" >
+        android:background="#242424" >
 
     </ListView>
 
@@ -22,6 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="#F00000"
         android:text="Record" />
         
 </RelativeLayout>

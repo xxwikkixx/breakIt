@@ -18,7 +18,9 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
+        android:ems="10"
+        android:text="test"
+        android:textColor="#FFFAFA" >
 
         <requestFocus />
     </EditText>
@@ -36,6 +38,7 @@
         android:enabled="true"
         android:gravity="center"
         android:text="Publish"
-        android:background="#9C0000" />
+        android:background="#9C0000"
+        android:textColor="#FFFAFA" />
 
 </LinearLayout>

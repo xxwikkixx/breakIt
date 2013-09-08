@@ -30,7 +30,7 @@ public class upload extends AsyncTask<String, Void, String>{
 	    HttpPost httpPost = new HttpPost(URL);
 	    try {
 	        MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-	        entity.addPart("video", new FileBody(new File (videouri.getData()));
+	//        entity.addPart("video", new FileBody(new File (videouri.getData()));
 
 //	        for(int index=0; index < nameValuePairs.size(); index++) {
 	  //          if(nameValuePairs.get(index).getName().equalsIgnoreCase("image")) {
